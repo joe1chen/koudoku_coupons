@@ -50,7 +50,7 @@ module KoudokuCoupons
     
     def show
       return redirect_to main_app.root_path, status: 302 if params[:id].nil? || params[:id] == ''
-      @promotion = Promotion.find_by_name(params[:id])
+      @promotion = Promotion.find(params[:id])
       
       return redirect_to main_app.root_path, status: 302 if @promotion.nil?
       session[:koudoku_coupon_code] = @promotion.coupon_code
